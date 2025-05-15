@@ -53,9 +53,11 @@ def quickSortIterative(arr, l, h):
   stack.append((l, h))
   
   while len(stack):
-    partition_index = partition(arr, l, h)
-    stack.append((l, partition_index - 1))
-    stack.append(partition_index + 1, h)
+    low, high = stack.pop()
+    if low < high:
+        partition_index = partition(arr, low, high)
+        stack.append((low, partition_index - 1))
+        stack.append((partition_index + 1, high))
     
 
 # Driver code to test above 
